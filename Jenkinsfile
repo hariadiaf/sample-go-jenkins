@@ -1,5 +1,7 @@
 pipeline{
-    agent: any
+    agent{
+        dockerfile true
+    }
     environment {
         root = "go"
         branch = "main"
@@ -16,15 +18,15 @@ pipeline{
                 git branch: "${branch}", url: "${scmUrl}"
             }
         }
-        stage("Go Test") {
-            steps {
-                sh "${root} test"
-            }
-        }
-        stage("Go Build") {
-            steps {
-                sh "${root} build"
-            }
-        }
+        // stage("Go Test") {
+        //     steps {
+        //         sh "${root} test"
+        //     }
+        // }
+        // stage("Go Build") {
+        //     steps {
+        //         sh "${root} build"
+        //     }
+        // }
     }
 }
