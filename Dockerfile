@@ -8,7 +8,7 @@ COPY . .
 
 RUN go mod tidy
 RUN go version
-RUN go test ./ ... -cover
+RUN go test ./... -cover
 RUN go build -o sample-go-jenkins
 
 
