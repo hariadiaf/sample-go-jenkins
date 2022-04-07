@@ -5,11 +5,11 @@ node {
         checkout git: 'https://github.com/hariadiaf/sample-go-jenkins.git'
         
         stage 'preTest'
-        sh "${root} go version"
+        sh "${root} version"
         
         stage 'Test'
-        sh "${root} go test -cover"
+        sh "${root} test ./... -cover"
         
         stage 'Build'
-        sh "${root}go build ."
+        sh "${root} build ./..."
 }
