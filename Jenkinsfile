@@ -2,7 +2,7 @@ node {
     def root = "go"
     
         stage 'Checkout'
-        git url: 'https://github.com/hariadiaf/sample-go-jenkins.git'
+        git branch: "main", url: 'https://github.com/hariadiaf/sample-go-jenkins.git' 
         
         stage 'preTest'
         sh "${root} version"
