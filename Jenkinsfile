@@ -11,5 +11,5 @@ node {
         sh "${root} test ./... -cover"
         
         stage 'Build'
-        sh "${root} build ./..."
+        sh "${root} build ./..."  
 }
