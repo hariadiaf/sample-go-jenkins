@@ -6,6 +6,8 @@ WORKDIR /src
 
 COPY . .
 
+RUN go version
+
 RUN go mod tidy
 
 RUN go test

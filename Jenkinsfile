@@ -3,16 +3,16 @@ pipeline{
         dockerfile true
     }
     environment {
-        root = "go"
+        // root = "go"
         branch = "main"
         scmUrl = "https://github.com/hariadiaf/sample-go-jenkins.git"
     }
     stages {
-        stage("Go Version") {
-            steps {
-                sh "${root} version"
-            }
-        }
+        // stage("Go Version") {
+        //     steps {
+        //         sh "${root} version"
+        //     }
+        // }
         stage("Git Clone") {
             steps {
                 git branch: "${branch}", url: "${scmUrl}"
