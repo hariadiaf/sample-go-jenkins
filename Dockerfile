@@ -6,12 +6,9 @@ WORKDIR /src
 
 COPY . .
 
-RUN go version
-
 RUN go mod tidy
-
-RUN go test
-
+RUN go version
+RUN go test ./ ... -cover
 RUN go build -o sample-go-jenkins
 
 

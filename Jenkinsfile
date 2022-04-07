@@ -1,32 +1,27 @@
 pipeline{
-    agent{
-        dockerfile true
-    }
+    agent any
     environment {
         // root = "go"
         branch = "main"
         scmUrl = "https://github.com/hariadiaf/sample-go-jenkins.git"
     }
     stages {
-        // stage("Go Version") {
-        //     steps {
-        //         sh "${root} version"
-        //     }
-        // }
         stage("Git Clone") {
             steps {
                 git branch: "${branch}", url: "${scmUrl}"
             }
         }
-        // stage("Go Test") {
-        //     steps {
-        //         sh "${root} test"
-        //     }
-        // }
-        // stage("Go Build") {
-        //     steps {
-        //         sh "${root} build"
-        //     }
-        // }
+        
+        stage("Go Dockerize") {
+            steps {
+                sh "docker build -t go-sample-jenkins ."
+            }
+        }
+        
+        stage("Deploy") {
+            steps {
+                echo "DEPLOY SUCCESS"
+            }
+        }        
     }
 }
