@@ -1,24 +1,15 @@
-// Run on an agent where we want to use Go
 node {
-    // Ensure the desired Go version is installed
-    def root = tool type: 'go', name: 'Go 1.15'
-
-    // Export environment variables pointing to the directory where Go was installed
-    withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin"]) {
+    def root = "go"
     
         stage 'Checkout'
         checkout git: 'https://github.com/hariadiaf/sample-go-jenkins.git'
         
         stage 'preTest'
-        sh 'go version'
+        sh "${root} go version"
         
         stage 'Test'
-        sh 'go test -cover'
+        sh "${root} go test -cover"
         
         stage 'Build'
-        sh 'go build .'
-            
-        stage 'Deploy'
-
-    }
+        sh "${root}go build ."
 }
